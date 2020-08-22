@@ -1,12 +1,12 @@
 import React from "react";
 import { Provider as PaperProvider } from 'react-native-paper';
-import EnterAmount from "./app/screens/EnterAmount";
+import PaidSuccessfully from "./app/screens/PaidSuccessfully";
 
 
 export default function App() {
   return (
     <PaperProvider >
-     <EnterAmount />
+     <PaidSuccessfully />
   </PaperProvider>
   );
 }

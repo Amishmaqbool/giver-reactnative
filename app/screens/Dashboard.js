@@ -1,6 +1,6 @@
 import React from "react";
-import { Appbar, Avatar, Button, Title,List ,} from "react-native-paper";
-import { View, StyleSheet, Image,Text } from "react-native";
+import { Appbar, Avatar, Button, Title, List } from "react-native-paper";
+import { View, StyleSheet, Image, Text } from "react-native";
 
 export default function Dashboard(props) {
   const _goBack = () => console.log("Went back");
@@ -10,7 +10,7 @@ export default function Dashboard(props) {
   const _handleMore = () => console.log("Shown more");
 
   return (
-    <View style={{backgroundColor:"#E5E5E5" ,paddingBottom:"4.5%"}}>
+    <View style={{ backgroundColor: "#E5E5E5", paddingBottom: "4.5%" }}>
       <Appbar.Header statusBarHeight={40} style={styles.container}>
         <View style={styles.profileimage}>
           <Avatar.Image size={50} source={require("../assets/jhon.png")} />
@@ -58,7 +58,11 @@ export default function Dashboard(props) {
       <View style={styles.dbsendmoneyprofile}>
         <View style={{ marginRight: "3%", paddingTop: "13%" }}>
           <Avatar.Icon
-            style={{ backgroundColor: "#E5E5E5", borderWidth: 1, marginLeft: -4 }}
+            style={{
+              backgroundColor: "#E5E5E5",
+              borderWidth: 1,
+              marginLeft: -4,
+            }}
             size={45}
             icon="plus"
           />
@@ -86,78 +90,91 @@ export default function Dashboard(props) {
       <View style={{ paddingHorizontal: "6%", marginTop: "17%" }}>
         <Title style={styles.reacentactivitytitle}>Recent Activity</Title>
         <View style={styles.Recentbar}></View>
-      
+
         <List.Item
+          title="Ramzee Bolton"
+          description="Payment recieved to bank"
+          left={(props) => (
+            <Avatar.Image
+              source={require("../assets/ramzee.png")}
+              style={{
+                backgroundColor: "white",
+                marginTop: "2%",
+                marginRight: "2%",
+              }}
+              size={40}
+            />
+          )}
+          right={(props) => (
+            <Title style={styles.amountheading}> -1270$ </Title>
+          )}
+        />
 
-    title="Ramzee Bolton"
-    description="Payment recieved to bank"
-    left={props => <Avatar.Image 
-      
-      source={require("../assets/ramzee.png")}
-      style={{ backgroundColor: "white" ,marginTop:"2%" , marginRight:"2%"}}
-      size={40}
+        <List.Item
+          title="Arya Stark"
+          description="Payment recieved to bank"
+          left={(props) => (
+            <Avatar.Image
+              source={require("../assets/arya.png")}
+              style={{
+                backgroundColor: "white",
+                marginTop: "2%",
+                marginRight: "2%",
+              }}
+              size={40}
+            />
+          )}
+          right={(props) => <Title style={styles.amountheading}> +300$ </Title>}
+        />
 
-      
-    />}
-    right={props => <Title
-      style={styles.amountheading}> -1270$ </Title>
+        <List.Item
+          title="Payoneer"
+          description="Payment recieved to bank"
+          left={(props) => (
+            <Avatar.Image
+              source={require("../assets/payoneer.png")}
+              style={{
+                backgroundColor: "white",
+                marginTop: "2%",
+                marginRight: "2%",
+              }}
+              size={40}
+            />
+          )}
+          right={(props) => <Title style={styles.amountheading}> -200$ </Title>}
+        />
 
-      
-    }
-    
-  />
-  
-  <List.Item
-  title="Arya Stark"
-  description="Payment recieved to bank"
-  left={props => <Avatar.Image
-    source={require("../assets/arya.png")}
-    style={{ backgroundColor: "white" ,marginTop:"2%", marginRight:"2%"}}
-    size={40}
-  />}
-  right={props => <Title
-    style={styles.amountheading}> +300$ </Title>}
-/>
-
-<List.Item
-    title="Payoneer"
-    description="Payment recieved to bank"
-    left={props => <Avatar.Image
-      source={require("../assets/payoneer.png")}
-      style={{ backgroundColor: "white" ,marginTop:"2%", marginRight:"2%" }}
-      size={40}
-    />}
-    right={props => <Title
-      style={styles.amountheading}> -200$ </Title>}
-  />
-  
-  <List.Item
-  title="Upwork"
-  description="Payment recieved to bank"
-  left={props => <Avatar.Image
-    source={require("../assets/upwork.png")}
-    style={{ backgroundColor: "white" ,marginTop:"2%" , marginRight:"2%"}}
-    size={40}
-  />}
-  right={props => <Title 
-  style={styles.amountheading}
-  > +500$ </Title>}
-/>
-        
-
+        <List.Item
+          title="Upwork"
+          description="Payment recieved to bank"
+          left={(props) => (
+            <Avatar.Image
+              source={require("../assets/upwork.png")}
+              style={{
+                backgroundColor: "white",
+                marginTop: "2%",
+                marginRight: "2%",
+              }}
+              size={40}
+            />
+          )}
+          right={(props) => <Title style={styles.amountheading}> +500$ </Title>}
+        />
       </View>
       <Button
-          uppercase={false}
-          icon={"plus"}
-          style={styles.paymentbtn}
-          contentStyle={{ height: 45 }}
-          labelStyle={{ color: "white", fontSize: 12 }}
-          mode="contained"
-          onPress={() => console.log("Pressed")}
-        > New Payment</Button>
+        uppercase={false}
+        icon={"plus"}
+        style={styles.paymentbtn}
+        contentStyle={{ height: 45 }}
+        labelStyle={{ color: "white", fontSize: 12 }}
+        mode="contained"
+        onPress={() => console.log("Pressed")}
+      >
+        {" "}
+        New Payment
+      </Button>
 
-      <View>
-    </View>
+      <View></View>
     </View>
   );
 }
@@ -232,7 +249,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     paddingHorizontal: "8%",
-    paddingVertical:"6%"
+    paddingVertical: "6%",
   },
   sendmoneyheading: {
     fontStyle: "normal",
@@ -261,23 +278,22 @@ const styles = StyleSheet.create({
     width: "100%",
     borderWidth: 0.5,
     borderColor: "#000000",
-    
   },
-  reacentactivitytitle:{
+  reacentactivitytitle: {
     marginLeft: -5,
-    marginBottom:"4%",
-    marginTop:"5%" ,
+    marginBottom: "4%",
+    marginTop: "5%",
     fontStyle: "normal",
     fontWeight: "normal",
     fontSize: 15,
     lineHeight: 19,
-    height: 20
+    height: 20,
   },
-  amountheading:{
-    fontSize:15,
-    marginTop:"3%"
+  amountheading: {
+    fontSize: 15,
+    marginTop: "3%",
   },
-  paymentbtn:{
+  paymentbtn: {
     position: "absolute",
     top: "96%",
     left: "25%",
@@ -285,7 +301,5 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     backgroundColor: "#003289",
     fontSize: 30,
-  }
-
+  },
 });
-
