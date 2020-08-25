@@ -9,7 +9,7 @@ export default function OptVeification(props) {
     <View>
       <View style={{ marginTop: "30%", marginHorizontal: "22%" }}>
         <Image
-          style={styles.balancebox}
+          
           source={require("../assets/otpverification.png")}
         ></Image>
       </View>
@@ -137,8 +137,7 @@ export default function OptVeification(props) {
 }
 
 const styles = StyleSheet.create({
-  container: {},
-  coverimg: {},
+ 
   surface: {
     height: 60,
     padding: 2,
