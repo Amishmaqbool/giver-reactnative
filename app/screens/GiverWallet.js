@@ -33,7 +33,7 @@ export default function PaidSuccessfully(props){
       </RadioButton.Group>
       </View>
 
-      <View style={{borderWidth:1,marginHorizontal:"5%",height:"46%" ,paddingVertical:"7%",borderRadius:10,borderColor:"#B6B6B6"}}>
+      <View style={{backgroundColor:"#F4FAFF", borderWidth:1,marginHorizontal:"5%",height:"46%" ,paddingVertical:"7%",borderRadius:10,borderColor:"#B6B6B6"}}>
           <View style={{marginHorizontal:"5%"}}>
           <Text style={{fontSize:14}}>Enter your card details</Text>
           <View>
@@ -101,4 +101,3 @@ export default function PaidSuccessfully(props){
             fontSize: 4,
           },
 })
-     
