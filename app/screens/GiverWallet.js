@@ -7,9 +7,15 @@ export default function GiverWallet({navigation}){
  
      const _goBack = () => console.log('Went back');
      const [value, setValue] = React.useState('first');
-     const [text, setText] = React.useState('');
-     const onChangeText = text => setText(text);
 
+     const [Detailtext, setDetailtext] = React.useState('');
+     const onDetailsChangeText = Detailtext => setDetailtext(Detailtext);
+
+     const [Validationdate, setValidationdate] = React.useState('');
+     const onValidationdateChangeText = Validationdate => setValidationdate(Validationdate);
+
+     const [Cvvtext, setCvvtext] = React.useState('');
+     const onCvvChangeText = Cvvtext => setCvvtext(Cvvtext);
       return(
 
         <View>
@@ -37,19 +43,19 @@ export default function GiverWallet({navigation}){
           <View style={{marginHorizontal:"5%"}}>
           <Text style={{fontSize:14}}>Enter your card details</Text>
           <View>
-          <TextInput style={{borderColor:"#8F909A",borderWidth:1,borderRadius:5,fontSize:35,paddingHorizontal:5,marginVertical:25}}  placeholder={""} placeholderTextColor={"#C8C8C8"} value={text} onChangeText={onChangeText} />
+          <TextInput style={{borderColor:"#8F909A",borderWidth:1,borderRadius:5,fontSize:35,paddingHorizontal:5,marginVertical:25}}  placeholder={""} placeholderTextColor={"#C8C8C8"} value={Detailtext} onChangeText={onDetailsChangeText} />
           </View>
           <View  style={{flex:1,flexDirection:"row",justifyContent:"center"}}>
            <View >
           <Text style={{fontSize:13}}>Expiry / Validation Date</Text>
           <View style={{width:"95%" ,marginLeft:"2%"}}>
-          <TextInput style={{borderColor:"#8F909A",borderWidth:1,borderRadius:5,fontSize:15,paddingHorizontal:15,marginVertical:10,paddingHorizontal:15,paddingVertical:9,height:45}}  placeholder={"MM/YY"} placeholderTextColor={"#C8C8C8"} value={text} onChangeText={onChangeText} />
+          <TextInput style={{borderColor:"#8F909A",borderWidth:1,borderRadius:5,fontSize:15,paddingHorizontal:15,marginVertical:10,paddingHorizontal:15,paddingVertical:9,height:45}}  placeholder={"MM/YY"} placeholderTextColor={"#C8C8C8"} value={Validationdate} onChangeText={onValidationdateChangeText} />
           </View>
           </View>
           <View style={{marginLeft:"10%",width:"40%"}}>
           <Text style={{fontSize:14}}>CVV</Text>
           <View style={{ marginLeft:"2%"}}>
-          <TextInput style={{borderColor:"#8F909A",borderWidth:1,borderRadius:5,fontSize:15,paddingHorizontal:15,marginVertical:10,paddingHorizontal:15,paddingVertical:9,height:45}}  placeholder={""} placeholderTextColor={"#C8C8C8"} value={text} onChangeText={onChangeText} />
+          <TextInput style={{borderColor:"#8F909A",borderWidth:1,borderRadius:5,fontSize:15,paddingHorizontal:15,marginVertical:10,paddingHorizontal:15,paddingVertical:9,height:45}}  placeholder={""} placeholderTextColor={"#C8C8C8"} value={Cvvtext} onChangeText={onCvvChangeText} />
           </View>
           </View>
           </View>
