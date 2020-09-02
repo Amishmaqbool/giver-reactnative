@@ -3,7 +3,7 @@ import { Appbar, Avatar, Title ,List, Button} from "react-native-paper";
 import { View, StyleSheet,Text,TextInput,ScrollView,SafeAreaView,} from "react-native";
 
 
-export default function AddMoney(props){
+export default function AddMoney({navigation}){
     const _goBack = () => console.log('Went back');
     const [CurrenylistItem, setCurrenylistItem] = useState('USD'); 
     const [text, setText] = React.useState('');
@@ -54,7 +54,7 @@ export default function AddMoney(props){
           contentStyle={{ height: 45 }}
           labelStyle={{ color: "white", fontSize: 12 }}
           mode="contained"
-          onPress={() => console.log("Pressed")}
+          onPress={() => navigation.navigate('GiverWallet')}
         > Proceed</Button>
          
          </View>
@@ -93,9 +93,6 @@ const styles = StyleSheet.create({
             
           },
           paybtn: {
-             
-              
-            
             marginHorizontal:"10%",
             marginTop:"95%",
             width: "80%",

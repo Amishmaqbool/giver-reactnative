@@ -2,7 +2,7 @@ import React ,{ useState } from "react";
 import { Image, Text, View, StyleSheet,TextInput } from "react-native";
 import { List, Button } from "react-native-paper";
 
-export default function CreateAccount(props) {
+export default function CreateAccount({navigation}) {
     const [Nametext, setNameText] = React.useState("");
     const [Mnotext, setMnotext] = React.useState("");
     const [Passtext, setPasstext] = React.useState("");
@@ -45,7 +45,7 @@ export default function CreateAccount(props) {
             contentStyle={{ height: 45 }}
             labelStyle={{ color: "white", fontSize: 18 }}
             mode="contained"
-            onPress={() => console.log("Pressed")}
+            onPress={() => navigation.navigate('OptVerification')}
           >
              Submit
           </Button>

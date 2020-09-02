@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Appbar, Avatar, Title ,Searchbar,List} from "react-native-paper";
 import { View, StyleSheet,Text,ScrollView,SafeAreaView,} from "react-native";
 
-export default function SearchContact(props){
+export default function SearchContact({navigation}){
 
     const _goBack = () => console.log('Went back');
 
@@ -100,7 +100,7 @@ export default function SearchContact(props){
   />}
   
 />
-<List.Item
+<List.Item  onPress={() => navigation.navigate('EnterAmount')}
   title="Captain America"
    description="+92-11254658213"
   left={props => <Avatar.Image

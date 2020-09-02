@@ -2,7 +2,7 @@ import React from "react";
 import { Image, Text, View, StyleSheet, ImageBackground } from "react-native";
 import {Button} from 'react-native-paper'
 
-export default function GiverMain(props) {
+export default function GiverMain({navigation}) {
   const image = require("../assets/mainbackground.png");
 
   return (
@@ -25,7 +25,7 @@ export default function GiverMain(props) {
           contentStyle={{ height: 50 }}
           labelStyle={{ color: "#000000", fontSize: 28 }}
           mode="text"
-          onPress={() => console.log("Pressed")}
+          onPress={() => navigation.navigate('CreateAccount')}
         > Get started</Button>
        </View>
     </ImageBackground>

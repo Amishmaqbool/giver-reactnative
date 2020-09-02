@@ -3,7 +3,7 @@ import { Appbar, Avatar, Title ,List, Button} from "react-native-paper";
 import { View, StyleSheet,Text,TextInput,ScrollView,SafeAreaView,} from "react-native";
 
 
-export default function EnterAmount(props){
+export default function EnterAmount({navigation}){
     const _goBack = () => console.log('Went back');
     const [CurrenylistItem, setCurrenylistItem] = useState('USD'); 
     const [text, setText] = React.useState('');
@@ -26,7 +26,7 @@ export default function EnterAmount(props){
 
            <Avatar.Image
              source={require("../assets/Danial.png")}
-             style={{ backgroundColor: "white" ,paddingHorizontal:"32%"}}
+             style={{ backgroundColor: "white" ,marginHorizontal:"32%"}}
              size={45} />
 
            <List.Item 
@@ -80,6 +80,15 @@ export default function EnterAmount(props){
            size={60}
                />}/> 
 
+          <Button
+          uppercase={false}
+          style={styles.paybtn}
+          contentStyle={{ height: 40 }}
+          labelStyle={{ color: "white", fontSize: 12 }}
+          mode="contained"
+          onPress={() => navigation.navigate('PaidSuccessfully')}
+        > Proceed</Button>
+
         
          
          </View>
@@ -116,11 +125,10 @@ const styles = StyleSheet.create({
             
             fontSize: 30,
             
-          },
-          paybtn: {
-            marginVertical:"5%",
-            marginHorizontal:"10%",
-            width: "100%",
+          },paybtn: {
+           marginTop:"5%",
+           marginHorizontal:"10%",
+            width: "80%",
             borderRadius: 0,
             backgroundColor: "#003289",
             fontSize: 4,

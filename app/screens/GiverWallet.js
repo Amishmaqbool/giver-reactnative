@@ -3,7 +3,7 @@ import { Appbar, Avatar, Title ,List, Button,RadioButton} from "react-native-pap
 import { View, StyleSheet,Text,TextInput,ScrollView,SafeAreaView,Image} from "react-native";
 
 
-export default function PaidSuccessfully(props){
+export default function GiverWallet({navigation}){
  
      const _goBack = () => console.log('Went back');
      const [value, setValue] = React.useState('first');
@@ -33,7 +33,7 @@ export default function PaidSuccessfully(props){
       </RadioButton.Group>
       </View>
 
-      <View style={{backgroundColor:"#F4FAFF", borderWidth:1,marginHorizontal:"5%",height:"46%" ,paddingVertical:"7%",borderRadius:10,borderColor:"#B6B6B6"}}>
+      <View style={{backgroundColor:"#F4FAFF", borderWidth:1,marginHorizontal:"5%",height:250,paddingVertical:"7%",borderRadius:10,borderColor:"#B6B6B6"}}>
           <View style={{marginHorizontal:"5%"}}>
           <Text style={{fontSize:14}}>Enter your card details</Text>
           <View>
@@ -54,18 +54,18 @@ export default function PaidSuccessfully(props){
           </View>
           </View>
 
-          <Button
+         
+          </View>
+          
+     </View>
+     <Button
           uppercase={false}
           style={styles.paybtn}
           contentStyle={{ height: 45 }}
           labelStyle={{ color: "white", fontSize: 12 }}
           mode="contained"
-          onPress={() => console.log("Pressed")}
+          onPress={() => navigation.navigate('Dashboard')}
         > Pay</Button>
-          </View>
-          
-     </View>
-      
         </View>
 
       )}
@@ -93,9 +93,9 @@ export default function PaidSuccessfully(props){
             borderColor: "#9E9E9E",
           },
           paybtn: {
-            marginVertical:"55%",
-            marginHorizontal:"10%",
-            width: "85%",
+            marginVertical:"15%",
+            marginHorizontal:"12%",
+            width: "75%",
             borderRadius: 0,
             backgroundColor: "#003289",
             fontSize: 4,

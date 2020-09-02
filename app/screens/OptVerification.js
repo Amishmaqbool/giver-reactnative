@@ -2,7 +2,7 @@ import React from "react";
 import { Image, Text, View, StyleSheet, TextInput } from "react-native";
 import { List, Surface, Button } from "react-native-paper";
 
-export default function OptVeification(props) {
+export default function OptVeification({navigation}) {
   const [text, setText] = React.useState("");
   const onChangeText = (text) => setText(text);
   return (
@@ -126,9 +126,9 @@ export default function OptVeification(props) {
             contentStyle={{ height: 45 }}
             labelStyle={{ color: "white", fontSize: 14 }}
             mode="contained"
-            onPress={() => console.log("Pressed")}
+            onPress={() => navigation.navigate('AddMoney')}
           >
-            Get OTP on call
+            Verify
           </Button>
         </View>
       </View>

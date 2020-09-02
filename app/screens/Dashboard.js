@@ -2,7 +2,7 @@ import React from "react";
 import { Appbar, Avatar, Button, Title,List ,} from "react-native-paper";
 import { View, StyleSheet, Image,Text } from "react-native";
 
-export default function Dashboard(props) {
+export default function Dashboard({navigation}) {
   const _goBack = () => console.log("Went back");
 
   const _handleSearch = () => console.log("Searching");
@@ -153,7 +153,7 @@ export default function Dashboard(props) {
           contentStyle={{ height: 45 }}
           labelStyle={{ color: "white", fontSize: 12 }}
           mode="contained"
-          onPress={() => console.log("Pressed")}
+          onPress={() => navigation.navigate('SearchContact')}
         > New Payment</Button>
 
       <View>

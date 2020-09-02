@@ -3,7 +3,7 @@ import { Appbar, Avatar, Title ,List, Button} from "react-native-paper";
 import { View, StyleSheet,Text,TextInput,ScrollView,SafeAreaView,Image} from "react-native";
 
 
-export default function PaidSuccessfully(props){
+export default function PaidSuccessfully({navigation}){
  
      const _goBack = () => console.log('Went back');
 
@@ -77,7 +77,7 @@ export default function PaidSuccessfully(props){
           contentStyle={{ height: 50 }}
           labelStyle={{ color: "white", fontSize: 15 }}
           mode="contained"
-          onPress={() => console.log("Pressed")}
+          onPress={() =>navigation.navigate('Dashboard')}
         > Back to home</Button>
          
          </View>
