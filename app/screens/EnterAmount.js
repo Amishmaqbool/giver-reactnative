@@ -47,8 +47,8 @@ export default function EnterAmount({ navigation }) {
   }, []);
 
   return (
-    <View>
-      <Appbar.Header statusBarHeight={40} style={styles.container}>
+    <View style={styles.container}>
+      <Appbar.Header statusBarHeight={40}>
         <Appbar.BackAction onPress={_goBack} />
         <Appbar.Content
           title="Send payments"
@@ -56,24 +56,27 @@ export default function EnterAmount({ navigation }) {
           style={styles.sendpaymentnavtext}
         />
       </Appbar.Header>
+      
       <View style={styles.bar}></View>
 
-      <View style={{ paddingHorizontal: "28%", paddingVertical: "15%" }}>
+      {/* <View style={{ paddingHorizontal: "28%", paddingVertical: "15%" }}> */}
+      <View style={styles.recipientContainer}>
         <Avatar.Image
           source={require("../assets/Danial.png")}
-          style={{ backgroundColor: "white", marginHorizontal: "32%" }}
+          // style={{ backgroundColor: "white", marginHorizontal: "32%" }}
           size={45}
         />
 
         <List.Item
-          titleStyle={{ marginTop: "-1%" }}
-          descriptionStyle={{ fontSize: 12, paddingHorizontal: "10%" }}
+          // titleStyle={{ marginTop: "-1%" }}
+          // descriptionStyle={{ fontSize: 12, paddingHorizontal: "10%" }}
           title="Captain America"
           description="+92-11254658213"
         />
       </View>
-      <View>
-        <View>
+      
+      <View style={styles.fieldContainer}>
+        <View style={styles.currencyContainer}>
           <List.Section>
             <List.Accordion style={{ width: "30%" }} title={CurrenylistItem}>
               <List.Item
@@ -87,14 +90,15 @@ export default function EnterAmount({ navigation }) {
             </List.Accordion>
           </List.Section>
         </View>
-        <View
+        {/* <View
           style={{
             width: "65%",
             position: "absolute",
             top: "10%",
             left: "27%",
           }}
-        >
+        > */}
+        <View style={styles.inputContainer}>
           <TextInput
             style={{
               borderBottomColor: "#003289",
@@ -109,7 +113,8 @@ export default function EnterAmount({ navigation }) {
           />
         </View>
 
-        <View style={{ paddingVertical: "15%" }}>
+        {/* <View style={{ paddingVertical: "15%" }}> */}
+        <View style={styles.addMessageContainer}>
           <Button
             uppercase={false}
             style={styles.paymentbtn}
@@ -122,7 +127,9 @@ export default function EnterAmount({ navigation }) {
             Add a message
           </Button>
         </View>
+
       </View>
+
       <Portal>
         <Dialog visible={visible} onDismiss={hideDialog}>
           <Dialog.Title>Amount Added</Dialog.Title>
@@ -134,14 +141,16 @@ export default function EnterAmount({ navigation }) {
           </Dialog.Actions>
         </Dialog>
       </Portal>
-      <View
+
+      {/* <View
         style={{
           borderTopWidth: 1,
           borderColor: "#E5E5E5",
           marginTop: "25%",
           paddingVertical: "5%",
         }}
-      >
+      > */}
+      <View style={styles.buttonContainer}>
         <List.Item
           title="Giver Wallet"
           titleStyle={{ fontSize: 15, fontWeight: "bold" }}
@@ -168,35 +177,61 @@ export default function EnterAmount({ navigation }) {
           Pay
         </Button>
       </View>
+
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: "#ffffff",
   },
+  recipientContainer: {
+    flex: 1,
+    textAlign: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    alignItems: 'center',
+
+  },
+  fieldContainer: {
+    flex: 2
+  },
+  currencyContainer: {
+
+  },
+  inputContainer: {
+
+  },
+  addMessageContainer: {
+    flex: 2,
+
+  },
+  buttonContainer: {
+    flex: 1,
+
+  },
   sendpaymentnavtext: {
-    marginLeft: "-3%",
+    // marginLeft: "-3%",
   },
   bar: {
-    marginLeft: "6.5%",
-    width: "87%",
+    // marginLeft: "6.5%",
+    // width: "87%",
     borderWidth: 0.5,
     borderColor: "#9E9E9E",
   },
   paymentbtn: {
-    position: "absolute",
-    top: 25,
-    left: "25%",
-    width: "50%",
-
+    // position: "absolute",
+    // top: 25,
+    // left: "25%",
+    // width: "50%",
     fontSize: 30,
   },
   paybtn: {
-    marginTop: "5%",
-    marginHorizontal: "10%",
-    width: "80%",
+    // marginTop: "5%",
+    // marginHorizontal: "10%",
+    // width: "80%",
     borderRadius: 0,
     backgroundColor: "#003289",
     fontSize: 4,
