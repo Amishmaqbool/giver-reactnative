@@ -1,176 +1,189 @@
 import React from "react";
-import { 
-  Appbar,
-  Avatar,
-  Button,
-  Title,
-  List,
-} from "react-native-paper";
-import { 
-  View,
-  StyleSheet,
-  Image,
-  ScrollView,
-  Text,
-} from "react-native";
+import { Appbar, Avatar, Button, Title,List ,} from "react-native-paper";
+import { View, StyleSheet, Image,Text,ScrollView ,SafeAreaView} from "react-native";
 
-export default function Dashboard({ navigation }) {
+export default function Dashboard({navigation}) {
+  const _goBack = () => console.log("Went back");
+
   const _handleSearch = () => console.log("Searching");
 
+  const _handleMore = () => console.log("Shown more");
+
   return (
-    <View style={styles.container}>
-
-      <Appbar.Header statusBarHeight={40}>
-
+    <View style={{backgroundColor:"#FFFFFF" ,paddingBottom:"4.5%"}}>
+      <Appbar.Header statusBarHeight={40} style={styles.container}>
+        <View style={styles.profileimage}>
           <Avatar.Image size={50} source={require("../assets/jhon.png")} />
-
+        </View>
+        <View style={styles.navtext}>
           <Appbar.Content
             color={"#000000"}
-            title="Hi, Rinky"
+            title="Hii, Rinky"
             subtitle="Check your profile"
           />
-
+        </View>
+        <View style={styles.navmenu}>
           <Appbar.Action size={30} icon="menu" onPress={_handleSearch} />
-
+        </View>
       </Appbar.Header>
+      <View style={styles.bar}></View>
 
-      <View style={styles.balanceContainer}>
+      <View style={styles.giverboxcontainer}>
         <Image
-          style={styles.balanceBox}
+          style={styles.balancebox}
           source={require("../assets/GiverBlanaceBox.png")}
         ></Image>
 
-        <Text style={styles.balanceTitle}>Giver Balance</Text>
+        <Text style={styles.giverbalanceheading}>Giver Balance</Text>
 
-        <Text style={styles.balanceAmount}>$88,456/- USD</Text>
+        <Text style={styles.giverbalancedetailsheading}>88,456/- USD</Text>
 
         <Button
           uppercase={false}
-          style={styles.addMoneyButton}
+          style={styles.btn}
           contentStyle={{ height: 31 }}
           labelStyle={{ color: "white", fontSize: 6.5 }}
           mode="contained"
-          onPress={() => navigation.navigate('AddMoney')}
+          onPress={() => console.log("Pressed")}
         >
           Add money to your wallet
         </Button>
-
       </View>
 
-      <View style={styles.dbSendMoneyView}>
-
-        <View style={styles.sendMoneyTitle}>
-          <Title>Send Money</Title>
-        </View>
-      
-        <View style={styles.arrowContainer}>
-          <Image source={require("../assets/Arrow.png")}></Image>
-        </View>
-
+      <View style={styles.dbsendmoneyview}>
+        <Title style={styles.sendmoneyheading}>Send Money</Title>
+        <Image source={require("../assets/Arrow.png")}></Image>
       </View>
 
-      <View style={styles.recentContacts}>
-
-        <View>
+      <View style={styles.dbsendmoneyprofile}>
+        <View style={{ marginRight: "3%", paddingTop: "13%" }}>
           <Avatar.Icon
             style={{ backgroundColor: "#E5E5E5", borderWidth: 1, marginLeft: -4 }}
             size={45}
             icon="plus"
           />
         </View>
-
-        <View>
+        <View
+          style={{ marginRight: "3%", alignItems: "center", paddingTop: "20%" }}
+        >
           <Avatar.Image
             source={require("../assets/ramzee.png")}
             style={{ backgroundColor: "white" }}
             size={45}
           />
-          <Text>Ramzee {"\n"}Bolten</Text>
+          <Text style={styles.dbsendmoneytext}>Ramzee {"\n"}Bolten</Text>
         </View>
-
-        <View>
+        <View style={{ marginRight: "3%", paddingTop: "20%" }}>
           <Avatar.Text
             style={{ backgroundColor: "#003289" }}
             size={45}
             label="KP"
           />
-          <Text>Karan {"\n"}Patel</Text>
+          <Text style={styles.dbsendmoneytext}>Karan {"\n"}Patel</Text>
         </View>
-
       </View>
 
-      <View style={styles.activityContainer}>
+      <View style={{ paddingHorizontal: "6%", marginTop: "17%" }}>
+        <Title style={styles.reacentactivitytitle}>Recent Activity</Title>
+        <View style={styles.Recentbar}></View>
+        <SafeAreaView style={styles.containerscroller}>
+            
+            <ScrollView 
+            
+            style={styles.scrollView}>
+        <List.Item
 
-        <Title style={styles.reacentActivityTitle}>Recent Activity</Title>
-        <View style={styles.recentBar}></View>
+    title="Ramzee Bolton"
+    description="Payment recieved to bank"
+    left={props => <Avatar.Image 
+      
+      source={require("../assets/ramzee.png")}
+      style={{ backgroundColor: "white" ,marginTop:"2%" , marginRight:"2%"}}
+      size={40}
 
-        <ScrollView>
+      
+    />}
+    right={props => <Title
+      style={styles.amountheading}> -1270$ </Title>
 
-          <List.Item
-            title="Ramzee Bolton"
-            description="Payment recieved to bank"
-            left={props => <Avatar.Image
-            source={require("../assets/ramzee.png")}
-            style={{ backgroundColor: "white", marginTop: "2%", marginRight: "2%" }}
-            size={40}
-            />}
-            right={props => <Title
-              style={styles.amountheading}> -1270$ </Title>
-            }
-          />
+      
+    }
+    
+  />
+  
+  <List.Item
+  title="Arya Stark"
+  description="Payment recieved to bank"
+  left={props => <Avatar.Image
+    source={require("../assets/arya.png")}
+    style={{ backgroundColor: "white" ,marginTop:"2%", marginRight:"2%"}}
+    size={40}
+  />}
+  right={props => <Title
+    style={styles.amountheading}> +300$ </Title>}
+/>
 
-          <List.Item
-            title="Arya Stark"
-            description="Payment recieved to bank"
-            left={props => <Avatar.Image
-              source={require("../assets/arya.png")}
-              style={{ backgroundColor: "white", marginTop: "2%", marginRight: "2%" }}
-              size={40}
-            />}
-            right={props => <Title
-              style={styles.amountheading}> +300$ </Title>}
-          />
+<List.Item
+    title="Payoneer"
+    description="Payment recieved to bank"
+    left={props => <Avatar.Image
+      source={require("../assets/payoneer.png")}
+      style={{ backgroundColor: "white" ,marginTop:"2%", marginRight:"2%" }}
+      size={40}
+    />}
+    right={props => <Title
+      style={styles.amountheading}> -200$ </Title>}
+  />
+  
+  <List.Item
+  title="Upwork"
+  description="Payment recieved to bank"
+  left={props => <Avatar.Image
+    source={require("../assets/upwork.png")}
+    style={{ backgroundColor: "white" ,marginTop:"2%" , marginRight:"2%"}}
+    size={40}
+  />}
+  right={props => <Title 
+  style={styles.amountheading}
+  > +500$ </Title>}
+   />
+   <List.Item
+  title="Upwork"
+  description="Payment recieved to bank"
+  left={props => <Avatar.Image
+    source={require("../assets/upwork.png")}
+    style={{ backgroundColor: "white" ,marginTop:"2%" , marginRight:"2%"}}
+    size={40}
+  />}
+  right={props => <Title 
+  style={styles.amountheading}
+  > +500$ </Title>}
+   />
+   <List.Item
+  title="Upwork"
+  description="Payment recieved to bank"
+  left={props => <Avatar.Image
+    source={require("../assets/upwork.png")}
+    style={{ backgroundColor: "white" ,marginTop:"2%" , marginRight:"2%"}}
+    size={40}
+  />}
+  right={props => <Title 
+  style={styles.amountheading}
+  > +500$ </Title>}
+   />
 
-          <List.Item
-            title="Payoneer"
-            description="Payment recieved to bank"
-            left={props => <Avatar.Image
-              source={require("../assets/payoneer.png")}
-              style={{ backgroundColor: "white", marginTop: "2%", marginRight: "2%" }}
-              size={40}
-            />}
-            right={props => <Title
-              style={styles.amountheading}> -200$ </Title>}
-          />
-
-          <List.Item
-            title="Upwork"
-            description="Payment recieved to bank"
-            left={props => <Avatar.Image
-              source={require("../assets/upwork.png")}
-              style={{ backgroundColor: "white", marginTop: "2%", marginRight: "2%" }}
-              size={40}
-            />}
-            right={props => <Title
-              style={styles.amountheading}
-            > +500$ </Title>}
-          />
-
-        </ScrollView>
-
-      </View>
-
-      <View style={styles.bottomBar}>
-        <Button
+   </ScrollView>
+   <Button
           uppercase={false}
           icon={"plus"}
-          style={styles.paymentBtn}
+          style={styles.paymentbtn}
           contentStyle={{ height: 45 }}
           labelStyle={{ color: "white", fontSize: 12 }}
           mode="contained"
-          onPress={() => navigation.navigate('SearchContact')}>
-          New Payment
-        </Button>
+          onPress={() => navigation.navigate('SearchContact')}
+        > New Payment</Button>
+   </SafeAreaView>
+        
 
       </View>
       
@@ -180,7 +193,20 @@ export default function Dashboard({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: "9%",
+    backgroundColor: "#FFFFFF",
+  },
+  profileimage: {
+    marginLeft: "8%",
+    marginTop: "12.5%",
+  },
+  navtext: {
+    marginLeft: "2%",
+    marginTop: "4.5%",
+  },
+  navmenu: {
+    marginLeft: "20%",
+    marginTop: "12.5%",
   },
   bar: {
     marginLeft: "6.5%",
@@ -188,88 +214,115 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: "#9E9E9E",
   },
-  balanceBox: {
-    resizeMode: "cover",
+  balancebox: {
+    marginTop: "8%",
+    marginLeft: "6.5%",
+    width: "87%",
     borderWidth: 0.5,
     borderColor: "#9E9E9E",
     borderRadius: 18,
   },
-  balanceTitle: {
+  giverbalanceheading: {
     position: "absolute",
-    bottom: 130,
-    left: 52,
+    top: "40%",
+    left: "13%",
     color: "#FFFFFF",
+    fontFamily: "Roboto",
     fontSize: 15,
     lineHeight: 17,
     fontWeight: "normal",
   },
 
-  balanceAmount: {
+  giverbalancedetailsheading: {
     position: "absolute",
-    bottom: 90,
-    left: 52,
+    top: "52%",
+    left: "13%",
     color: "#FFFFFF",
+    fontFamily: "Roboto",
     fontSize: 22,
     lineHeight: 26,
     fontWeight: "normal",
   },
-  addMoneyButton: {
+  btn: {
     position: "absolute",
-    bottom: 40,
-    left: 52, 
+    top: "72%",
+    left: "11%",
+    width: "36%",
     borderRadius: 0,
     backgroundColor: "#003289",
     fontSize: 4,
   },
-  balanceContainer: {
-    alignItems: 'center',
-    padding: 20
+  giverboxcontainer: {
+    marginBottom: "4%",
   },
-  dbSendMoneyView: {
+  dbsendmoneyview: {
+    flex: 1,
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
-    paddingHorizontal: 30,
-    paddingVertical: 22,
+    paddingHorizontal: "8%",
+    paddingVertical:"6%"
   },
-  sendMoneyTitle: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start'
+  sendmoneyheading: {
+    fontStyle: "normal",
+    fontWeight: "normal",
+    fontSize: 15,
+    lineHeight: 19,
+    width: 100,
+    height: 20,
+    marginLeft: -10,
   },
-  arrowContainer: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-
-  },
-  activityContainer: {
-    flex: 3,
-  },
-  bottomBar: {
+  dbsendmoneyprofile: {
     flex: 1,
-    alignItems: 'center',
-  },
-  recentContacts: {
+    justifyContent: "flex-start",
+    alignItems: "center",
     flexDirection: "row",
-    paddingHorizontal: 30,
+    paddingHorizontal: "8%",
   },
-  recentBar: {
+  dbsendmoneytext: {
+    textAlign: "center",
+    lineHeight: 9,
+    marginTop: "10%",
+    fontSize: 7,
+  },
+  Recentbar: {
+    marginLeft: "-3%",
     width: "100%",
     borderWidth: 0.5,
     borderColor: "#000000",
+    
   },
-  reacentActivityTitle: {
-    paddingHorizontal: 30,
-    paddingVertical: 22,
-  },
-  amountheading: {
+  reacentactivitytitle:{
+    marginLeft: -5,
+    marginBottom:"4%",
+    marginTop:"5%" ,
+    fontStyle: "normal",
+    fontWeight: "normal",
     fontSize: 15,
+    lineHeight: 19,
+    height: 20
   },
-  paymentBtn: {
-    width: "45%",
+  amountheading:{
+    fontSize:15,
+    marginTop:"3%"
+  },
+  paymentbtn:{
+    position: "absolute",
+    top: "95%",
+    left: "25%",
+    width: "50%",
     borderRadius: 30,
     backgroundColor: "#003289",
     fontSize: 30,
+  }, scrollView: {
+        
+    marginHorizontal: "2%",
   },
+  containerscroller: {
+    height:"53%",
+  marginHorizontal:"1%"
+  }
+  
+
 
 });
-
