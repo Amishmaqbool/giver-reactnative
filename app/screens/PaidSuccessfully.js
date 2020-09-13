@@ -48,8 +48,8 @@ export default function PaidSuccessfully({navigation}){
 
               <View style={{flex:1,flexDirection:"row",justifyContent:"center",alignItems:"center",marginTop:"15%",marginLeft:"8%"}}>
                   
-                  <View >
-                  <Text style={{fontWeight:"bold",fontSize:25}}>$ 2,000</Text>
+                  <View  >
+                  <Text style={{fontWeight:"bold",fontSize:25 ,color:"#000000" , width:100}}>$ 2,000</Text>
                   </View>
                   <View style={{marginLeft:"5%"}}>
                   <Image source={(require("../assets/correct.png"))}></Image>

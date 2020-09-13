@@ -144,6 +144,7 @@ const styles = StyleSheet.create({
     width: 60,
     alignItems: "center",
     justifyContent: "center",
+    elevation:0
   },
   paybtn: {
     marginVertical: "40%",

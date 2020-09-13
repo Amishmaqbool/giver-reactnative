@@ -13,8 +13,8 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  ScrollView,
-  SafeAreaView,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import io from "socket.io-client";
 
@@ -48,73 +48,68 @@ export default function EnterAmount({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Appbar.Header statusBarHeight={40}>
+      <Appbar.Header statusBarHeight={40} style={{ backgroundColor: "#fff" }}>
         <Appbar.BackAction onPress={_goBack} />
         <Appbar.Content
-          title="Send payments"
-          titleStyle={{ fontSize: 16 }}
+          title={"Send Payments"}
+          titleStyle={{ fontSize: 16  }}
           style={styles.sendpaymentnavtext}
         />
       </Appbar.Header>
-      
       <View style={styles.bar}></View>
 
-      {/* <View style={{ paddingHorizontal: "28%", paddingVertical: "15%" }}> */}
       <View style={styles.recipientContainer}>
-        <Avatar.Image
-          source={require("../assets/Danial.png")}
-          // style={{ backgroundColor: "white", marginHorizontal: "32%" }}
-          size={45}
-        />
-
-        <List.Item
-          // titleStyle={{ marginTop: "-1%" }}
-          // descriptionStyle={{ fontSize: 12, paddingHorizontal: "10%" }}
-          title="Captain America"
-          description="+92-11254658213"
-        />
-      </View>
-      
-      <View style={styles.fieldContainer}>
-        <View style={styles.currencyContainer}>
-          <List.Section>
-            <List.Accordion style={{ width: "30%" }} title={CurrenylistItem}>
-              <List.Item
-                onPress={() => setCurrenylistItem("USD")}
-                title="USD"
-              />
-              <List.Item
-                onPress={() => setCurrenylistItem("EUR")}
-                title="EUR"
-              />
-            </List.Accordion>
-          </List.Section>
-        </View>
-        {/* <View
-          style={{
-            width: "65%",
-            position: "absolute",
-            top: "10%",
-            left: "27%",
-          }}
-        > */}
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={{
-              borderBottomColor: "#003289",
-              borderBottomWidth: 2,
-              fontSize: 20,
-              paddingHorizontal: 5,
-            }}
-            placeholder={"Enter Amount"}
-            placeholderTextColor={"#C8C8C8"}
-            value={text}
-            onChangeText={onChangeText}
+        <View>
+          <Avatar.Image
+            source={require("../assets/Danial.png")}
+            // style={{ backgroundColor: "white", marginHorizontal: "32%" }}
+            size={45}
           />
         </View>
+        <View>
+          <List.Item
+            style={{ width: 150 }}
+            // titleStyle={{ marginTop: "-1%" }}
+            descriptionStyle={{ fontSize: 12, marginHorizontal: "4%" }}
+            title="Captain America"
+            description="+92-11254658213"
+          />
+        </View>
+      </View>
 
-        {/* <View style={{ paddingVertical: "15%" }}> */}
-        <View style={styles.addMessageContainer}>
+      <View style={styles.fieldContainer}>
+        <View style={styles.currencyContainer}>
+          <Text style={{ fontSize: 20 }}>USD</Text>
+        </View>
+        
+          <View style={styles.inputContainer}>
+            <TextInput
+              style={{
+                borderBottomColor: "#003289",
+                borderBottomWidth: 2,
+                fontSize: 20,
+              }}
+              placeholder={"Enter Amount"}
+              placeholderTextColor={"#C8C8C8"}
+              value={text}
+              keyboardType={"number-pad"}
+              onChangeText={onChangeText}
+            />
+          </View>
+        
+        <Portal>
+          <Dialog visible={visible} onDismiss={hideDialog}>
+            <Dialog.Title>Amount Added</Dialog.Title>
+            <Dialog.Content>
+              <Paragraph>$-{text} has been added to you account</Paragraph>
+            </Dialog.Content>
+            <Dialog.Actions>
+              <Button onPress={hideDialog}>Done</Button>
+            </Dialog.Actions>
+          </Dialog>
+        </Portal>
+      </View>
+      <View style={styles.addMessageContainer}>
           <Button
             uppercase={false}
             style={styles.paymentbtn}
@@ -127,31 +122,8 @@ export default function EnterAmount({ navigation }) {
             Add a message
           </Button>
         </View>
-
-      </View>
-
-      <Portal>
-        <Dialog visible={visible} onDismiss={hideDialog}>
-          <Dialog.Title>Amount Added</Dialog.Title>
-          <Dialog.Content>
-            <Paragraph>$-{text} has been added to you account</Paragraph>
-          </Dialog.Content>
-          <Dialog.Actions>
-            <Button onPress={hideDialog}>Done</Button>
-          </Dialog.Actions>
-        </Dialog>
-      </Portal>
-
-      {/* <View
-        style={{
-          borderTopWidth: 1,
-          borderColor: "#E5E5E5",
-          marginTop: "25%",
-          paddingVertical: "5%",
-        }}
-      > */}
-      <View style={styles.buttonContainer}>
-        <List.Item
+      <View style={styles.buttomContainer}>
+        <List.Item style={{width:400}}
           title="Giver Wallet"
           titleStyle={{ fontSize: 15, fontWeight: "bold" }}
           descriptionStyle={{ color: "#000000" }}
@@ -166,58 +138,56 @@ export default function EnterAmount({ navigation }) {
           )}
         />
 
-        <Button
+            <Button
           uppercase={false}
-          style={styles.paybtn}
-          contentStyle={{ height: 40 }}
+          style={styles.payBtn}
+          contentStyle={{ height: 45 }}
           labelStyle={{ color: "white", fontSize: 12 }}
           mode="contained"
-          onPress={() => AddMoney()}
+          onPress={() => navigation.navigate('PaidSuccessfully')}
         >
           Pay
         </Button>
       </View>
-
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  
   container: {
     flex: 1,
     backgroundColor: "#ffffff",
   },
   recipientContainer: {
     flex: 1,
-    textAlign: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column',
-    alignItems: 'center',
-
+    justifyContent: "center",
+    alignItems: "center",
   },
   fieldContainer: {
-    flex: 2
+    flex:0.2,
+    flexDirection: "row",
+    paddingHorizontal: "10%",
   },
   currencyContainer: {
-
+    flex:1,
   },
   inputContainer: {
-
+    flex: 5,
   },
-  addMessageContainer: {
-    flex: 2,
-
+  addMessageContainer:{
+    flex:1,
+    justifyContent:'flex-start',
+    alignItems:'center'
   },
-  buttonContainer: {
+  buttomContainer: {
     flex: 1,
-
-  },
-  sendpaymentnavtext: {
-    // marginLeft: "-3%",
+    alignItems: "center",
+    justifyContent:'space-evenly',
+    borderTopWidth: 1,
+    borderColor: "#E5E5E5",
   },
   bar: {
-    // marginLeft: "6.5%",
-    // width: "87%",
     borderWidth: 0.5,
     borderColor: "#9E9E9E",
   },
@@ -225,15 +195,15 @@ const styles = StyleSheet.create({
     // position: "absolute",
     // top: 25,
     // left: "25%",
-    // width: "50%",
+    width: "50%",
     fontSize: 30,
   },
-  paybtn: {
-    // marginTop: "5%",
-    // marginHorizontal: "10%",
-    // width: "80%",
+  payBtn: {
+    width: "80%",
     borderRadius: 0,
     backgroundColor: "#003289",
     fontSize: 4,
   },
+ 
+  
 });

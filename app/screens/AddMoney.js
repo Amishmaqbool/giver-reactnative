@@ -9,8 +9,8 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  ScrollView,
-  SafeAreaView,
+  TouchableWithoutFeedback,
+  Keyboard
 } from "react-native";
 import io from "socket.io-client";
 
@@ -44,26 +44,27 @@ export default function AddMoney({ navigation }) {
       </View>
       
       <View style={styles.fieldContainer}>
-          <View style={styles.currencyContainer}>
-            <Text style={{ fontSize: 20 }}>USD</Text>
-          </View>    
-          
-          <View style={styles.inputContainer}>
-            <TextInput
-              style={{
-                borderBottomColor: "#003289",
-                borderBottomWidth: 2,
-                fontSize: 20,
-              }}
-              placeholder={"Enter Amount"}
-              placeholderTextColor={"#C8C8C8"}
-              value={text}
-              keyboardType={"number-pad"}
-              onChangeText={onChangeText}
-            />
-          </View>
+        <View style={styles.currencyContainer}>
+          <Text style={{ fontSize: 20 }}>USD</Text>
+        </View>    
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={{
+              borderBottomColor: "#003289",
+              borderBottomWidth: 2,
+              fontSize: 20,
+            }}
+            placeholder={"Enter Amount"}
+            placeholderTextColor={"#C8C8C8"}
+            value={text}
+            keyboardType={"number-pad"}
+            onChangeText={onChangeText}
+          />
+        </View>
+        </TouchableWithoutFeedback>
 
-      </View>
+    </View>
 
       <View style={styles.buttomContainer}>
         <Button
@@ -123,5 +124,5 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     backgroundColor: "#003289",
     fontSize: 4,
-  },
+  }
 });
