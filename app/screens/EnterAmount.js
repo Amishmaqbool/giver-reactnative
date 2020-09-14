@@ -47,6 +47,7 @@ export default function EnterAmount({ navigation }) {
   }, []);
 
   return (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
     <View style={styles.container}>
       <Appbar.Header statusBarHeight={40} style={{ backgroundColor: "#fff" }}>
         <Appbar.BackAction onPress={_goBack} />
@@ -82,20 +83,22 @@ export default function EnterAmount({ navigation }) {
           <Text style={{ fontSize: 20 }}>USD</Text>
         </View>
         
-          <View style={styles.inputContainer}>
-            <TextInput
-              style={{
-                borderBottomColor: "#003289",
-                borderBottomWidth: 2,
-                fontSize: 20,
-              }}
-              placeholder={"Enter Amount"}
-              placeholderTextColor={"#C8C8C8"}
-              value={text}
-              keyboardType={"number-pad"}
-              onChangeText={onChangeText}
-            />
-          </View>
+    
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={{
+              borderBottomColor: "#003289",
+              borderBottomWidth: 2,
+              fontSize: 20,
+            }}
+            placeholder={"Enter Amount"}
+            placeholderTextColor={"#C8C8C8"}
+            value={text}
+            keyboardType={"number-pad"}
+            onChangeText={onChangeText}
+          />
+        </View>
+        
         
         <Portal>
           <Dialog visible={visible} onDismiss={hideDialog}>
@@ -150,6 +153,7 @@ export default function EnterAmount({ navigation }) {
         </Button>
       </View>
     </View>
+    </TouchableWithoutFeedback>
   );
 }
 

@@ -20,6 +20,8 @@ export default function AddMoney({ navigation }) {
   const onChangeText = (text) => setText(text);
 
   return (
+
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
     <View style={styles.container}>
       <Appbar.Header statusBarHeight={40} style={{ backgroundColor: '#fff' }}>
         <Appbar.BackAction onPress={_goBack} />
@@ -47,7 +49,6 @@ export default function AddMoney({ navigation }) {
         <View style={styles.currencyContainer}>
           <Text style={{ fontSize: 20 }}>USD</Text>
         </View>    
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View style={styles.inputContainer}>
           <TextInput
             style={{
@@ -62,7 +63,7 @@ export default function AddMoney({ navigation }) {
             onChangeText={onChangeText}
           />
         </View>
-        </TouchableWithoutFeedback>
+       
 
     </View>
 
@@ -80,6 +81,7 @@ export default function AddMoney({ navigation }) {
         </Button>
       </View>
     </View>
+    </TouchableWithoutFeedback>
   );
 }
 
