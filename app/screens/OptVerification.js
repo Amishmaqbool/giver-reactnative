@@ -2,16 +2,13 @@ import React from "react";
 import { Image, Text, View, StyleSheet, TextInput } from "react-native";
 import { List, Surface, Button } from "react-native-paper";
 
-export default function OptVeification({navigation}) {
+export default function OptVeification({ navigation }) {
   const [text, setText] = React.useState("");
   const onChangeText = (text) => setText(text);
   return (
     <View>
       <View style={{ marginTop: "30%", marginHorizontal: "22%" }}>
-        <Image
-          
-          source={require("../assets/otpverification.png")}
-        ></Image>
+        <Image source={require("../assets/otpverification.png")}></Image>
       </View>
       <View style={{ paddingHorizontal: "25%" }}>
         <List.Item
@@ -29,7 +26,7 @@ export default function OptVeification({navigation}) {
           style={{
             position: "absolute",
             top: "64%",
-            right: "30%",
+            right: "22%",
             fontSize: 14,
             fontWeight: "bold",
           }}
@@ -126,7 +123,7 @@ export default function OptVeification({navigation}) {
             contentStyle={{ height: 45 }}
             labelStyle={{ color: "white", fontSize: 14 }}
             mode="contained"
-            onPress={() => navigation.navigate('AddMoney')}
+            onPress={() => navigation.navigate("AddMoney")}
           >
             Verify
           </Button>
@@ -137,14 +134,13 @@ export default function OptVeification({navigation}) {
 }
 
 const styles = StyleSheet.create({
- 
   surface: {
     height: 60,
     padding: 2,
     width: 60,
     alignItems: "center",
     justifyContent: "center",
-    elevation:0
+    elevation: 0,
   },
   paybtn: {
     marginVertical: "40%",

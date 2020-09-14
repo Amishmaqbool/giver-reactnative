@@ -144,7 +144,7 @@ export default function EnterAmount({ navigation }) {
           contentStyle={{ height: 45 }}
           labelStyle={{ color: "white", fontSize: 12 }}
           mode="contained"
-          onPress={() => AddMoney}
+          onPress={() => AddMoney()}
         >
           Pay
         </Button>
