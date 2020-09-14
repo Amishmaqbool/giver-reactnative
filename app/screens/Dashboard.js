@@ -20,12 +20,14 @@ export default function Dashboard({ navigation }) {
   return (
     <View style={styles.container}>
 
-      <Appbar.Header statusBarHeight={40} style={{ backgroundColor: "#fff" }}>
+      <Appbar.Header statusBarHeight={40} style={{ backgroundColor: "#fff" ,paddingHorizontal:"5%"}}>
 
           <Avatar.Image size={50} source={require("../assets/jhon.png")} />
 
           <Appbar.Content
             color={"#000000"}
+            titleStyle={{alignSelf:'flex-start'}}
+            subtitleStyle={{alignSelf:'flex-start'}}
             title="Hi, Rinky"
             subtitle="Check your profile"
           />
@@ -71,7 +73,7 @@ export default function Dashboard({ navigation }) {
 
       <View style={styles.recentContacts}>
 
-        <View>
+        <View style={{marginHorizontal:"2%"}}>
           <Avatar.Icon
             style={{ backgroundColor: "#E5E5E5", borderWidth: 1, marginLeft: -4 }}
             size={45}
@@ -79,7 +81,7 @@ export default function Dashboard({ navigation }) {
           />
         </View>
 
-        <View>
+        <View style={{marginHorizontal:"1%"}}>
           <Avatar.Image
             source={require("../assets/ramzee.png")}
             style={{ backgroundColor: "white" }}
@@ -88,7 +90,7 @@ export default function Dashboard({ navigation }) {
           <Text>Ramzee {"\n"}Bolten</Text>
         </View>
 
-        <View>
+        <View style={{marginHorizontal:"1%"}}>
           <Avatar.Text
             style={{ backgroundColor: "#003289" }}
             size={45}
@@ -104,7 +106,7 @@ export default function Dashboard({ navigation }) {
         <Title style={styles.reacentActivityTitle}>Recent Activity</Title>
         <View style={styles.recentBar}></View>
 
-        <ScrollView>
+        <ScrollView style={{marginHorizontal:"5%"}}>
 
           <List.Item
             title="Ramzee Bolton"
@@ -144,6 +146,18 @@ export default function Dashboard({ navigation }) {
           />
 
           <List.Item
+            title="Upwork"
+            description="Payment recieved to bank"
+            left={props => <Avatar.Image
+              source={require("../assets/upwork.png")}
+              style={{ backgroundColor: "white", marginTop: "2%", marginRight: "2%" }}
+              size={40}
+            />}
+            right={props => <Title
+              style={styles.amountheading}
+            > +500$ </Title>}
+          />
+            <List.Item
             title="Upwork"
             description="Payment recieved to bank"
             left={props => <Avatar.Image
@@ -245,7 +259,7 @@ const styles = StyleSheet.create({
     flex: 3,
   },
   bottomBar: {
-    flex: 1,
+    flex: 0.8,
     alignItems: 'center',
   },
   recentContacts: {
@@ -253,13 +267,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
   },
   recentBar: {
-    width: "100%",
+    width: "90%",
     borderWidth: 0.5,
     borderColor: "#000000",
+    marginHorizontal:"5%"
   },
   reacentActivityTitle: {
     paddingHorizontal: 30,
-    paddingVertical: 22,
+    paddingVertical: 20,
   },
   amountheading: {
     fontSize: 15,
