@@ -16,7 +16,7 @@ export default function PaidSuccessfully({navigation}){
         <View>
         <Appbar.Header statusBarHeight={40} mode={"text"} style={styles.container}>
            <Appbar.Action icon="close" onPress={_goBack} style={{marginRight:"22%"}} />
-      <Appbar.Content title="Giver" titleStyle = {{fontSize:27,fontWeight:"bold"}}  style={{marginRight:"10%",}} />
+      <Appbar.Content title="Giver" titleStyle = {{fontSize:27,fontWeight:"bold"}}   />
       <Appbar.Content title="SHARE"titleStyle ={{fontSize:16,fontWeight:"bold" ,marginTop:"8%"}} color={"#003289"}  onPress={_handleSearch} />
       
     </Appbar.Header>
@@ -38,23 +38,27 @@ export default function PaidSuccessfully({navigation}){
 
             </View>
 
-           
+           <View>
            <List.Item style={{marginLeft:"20%"}}
              titleStyle={{marginTop:"40%",fontWeight:"bold"}}
              descriptionStyle={{fontSize:12,paddingHorizontal:"2%",color:"#000000 ,",position:"absolute",top:"54%",left:"7%"}}
              title="Captain America"
              description="Paid successfully to" 
               />
-
-              <View style={{flex:1,flexDirection:"row",justifyContent:"center",alignItems:"center",marginTop:"15%",marginLeft:"8%"}}>
-                  
-                  <View  >
-                  <Text style={{fontWeight:"bold",fontSize:25 ,color:"#000000" , width:100}}>$ 2,000</Text>
-                  </View>
-                  <View style={{marginLeft:"5%"}}>
-                  <Image source={(require("../assets/correct.png"))}></Image>
-                  </View>
               </View>
+
+              <List.Item style={{paddingHorizontal:"25%" ,paddingTop:"15%"}}
+          title="$ 2000"
+          titleStyle={{ fontWeight:"bold",fontSize:25 }}
+          
+          right= {(props) => (
+            <Avatar.Image
+              source={require('../assets/correct.png')}
+              style={{ backgroundColor: "white", marginTop: "2%" }}
+              size={35}
+            />
+          )}
+        />
 
         </View>
 
