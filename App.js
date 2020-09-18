@@ -1,4 +1,6 @@
-import React from "react";
+import React from "react";  
+import { Provider as StateProvider } from 'react-redux'
+import store from './app/redux/store'
 import { Provider as PaperProvider } from "react-native-paper";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -17,6 +19,7 @@ const Stack = createStackNavigator();
 
 export default function App() {
   return (
+    <StateProvider store={store}>
     <PaperProvider>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
@@ -32,5 +35,6 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>
+    </StateProvider>
   );
 }

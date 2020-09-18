@@ -16,12 +16,17 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
+import { useDispatch } from 'react-redux'
+import { amountAdded } from '../redux/actions'
+import store from '../redux/store'
+
 import io from "socket.io-client";
 
 export default function EnterAmount({ navigation }) {
   const _goBack = () => console.log("Went back");
   const [CurrenylistItem, setCurrenylistItem] = useState("USD");
   const [visible, setVisible] = React.useState(false);
+  const dispatch = useDispatch()
 
   // const showDialog = () => ;
 
@@ -34,15 +39,18 @@ export default function EnterAmount({ navigation }) {
   var socket = io("ws://192.168.100.166:3000");
 
   function AddMoney() {
+    dispatch(amountAdded(text));
     socket.emit("amount", text);
+    console.log("store",store.getState())
   }
-
+  
   useEffect(() => {
     // console.log(socket);
     socket.on("amount", function (giver) {
       console.log(giver);
       setText(giver);
       setVisible(true);
+      
     });
   }, []);
 
