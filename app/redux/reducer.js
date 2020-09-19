@@ -1,4 +1,4 @@
-import * as actions from './actionTypes'
+import * as actions from './actions/actionTypes'
 
 export default function reducer (state = [], action) {
     switch (action.type) {
@@ -6,7 +6,7 @@ export default function reducer (state = [], action) {
             return [
                 ...state,{
                     amount:action.payload.amount,
-                    visable:true
+                    visiable:true
 
                 }
             ]

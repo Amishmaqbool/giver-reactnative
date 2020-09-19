@@ -27,6 +27,7 @@
     "react-native-web": "~0.11.7",
     "react-redux": "^7.2.1",
     "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "socket.io-client": "^2.3.0",
     "top-bar-nav": "^1.2.2"
   },

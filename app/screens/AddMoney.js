@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from 'react-redux';
 import {
   Appbar,
   List,
@@ -12,12 +13,14 @@ import {
   TouchableWithoutFeedback,
   Keyboard
 } from "react-native";
-import io from "socket.io-client";
 
-export default function AddMoney({ navigation }) {
+
+
+export default  function AddMoney({ navigation }) {
   const _goBack = () => console.log("Went back");
   const [text, setText] = React.useState("");
   const onChangeText = (text) => setText(text);
+ 
 
   return (
 
