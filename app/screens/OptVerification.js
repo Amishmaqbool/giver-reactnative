@@ -1,8 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
+import { setVisiable } from "../redux/actions/addAmmountActions"
 import { Image, Text, View, StyleSheet, TextInput } from "react-native";
 import { List, Surface, Button } from "react-native-paper";
 
-export default function OptVeification({ navigation }) {
+ function OptVeification(props) {
+  const {Amount, modalvisibalityHandler} = props;
+  console.log("optverification store connect to redux",Amount)
   const [text, setText] = React.useState("");
   const onChangeText = (text) => setText(text);
   return (
@@ -123,7 +127,7 @@ export default function OptVeification({ navigation }) {
             contentStyle={{ height: 45 }}
             labelStyle={{ color: "white", fontSize: 14 }}
             mode="contained"
-            onPress={() => navigation.navigate("AddMoney")}
+            onPress={() => props.navigation.navigate("AddMoney")}
           >
             Verify
           </Button>
@@ -132,6 +136,22 @@ export default function OptVeification({ navigation }) {
     </View>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    Amount: state.enterAmount,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+   
+    modalvisibalityHandler:() =>{
+      dispatch(setVisiable())
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(OptVeification);
 
 const styles = StyleSheet.create({
   surface: {

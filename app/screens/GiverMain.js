@@ -1,10 +1,13 @@
 import React from "react";
+import { connect } from "react-redux";
+import { setVisiable } from "../redux/actions/addAmmountActions"
 import { Image, Text, View, StyleSheet, ImageBackground } from "react-native";
 import {Button} from 'react-native-paper'
 
-export default function GiverMain({navigation}) {
+ function GiverMain(props) {
+  const {Amount, modalvisibalityHandler} = props;
   const image = require("../assets/mainbackground.png");
-
+  console.log("Givermain connected to redux",Amount)
   return (
     <View style={styles.container}>
     <ImageBackground source={image} style={styles.image}>
@@ -25,13 +28,29 @@ export default function GiverMain({navigation}) {
           contentStyle={{ height: 50 }}
           labelStyle={{ color: "#000000", fontSize: 28 }}
           mode="text"
-          onPress={() => navigation.navigate('CreateAccount')}
+          onPress={() => props.navigation.navigate('CreateAccount')}
         > Get started</Button>
        </View>
     </ImageBackground>
   </View>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    Amount: state.enterAmount,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+   
+    modalvisibalityHandler:() =>{
+      dispatch(setVisiable())
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(GiverMain);
 
 const styles = StyleSheet.create({
   container: {

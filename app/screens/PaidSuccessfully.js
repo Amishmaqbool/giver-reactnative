@@ -9,8 +9,11 @@ import {
   SafeAreaView,
   Image,
 } from "react-native";
-
-export default function PaidSuccessfully({ navigation }) {
+import { connect } from "react-redux";
+import { setVisiable } from "../redux/actions/addAmmountActions";
+function PaidSuccessfully(props) {
+  const {Amount, modalvisibalityHandler} = props;
+  console.log("Paid successfully connected to redux store",Amount)
   const _goBack = () => console.log("Went back");
 
   const _handleSearch = () => console.log("Searching");
@@ -113,7 +116,7 @@ export default function PaidSuccessfully({ navigation }) {
           contentStyle={{ height: 50 }}
           labelStyle={{ color: "white", fontSize: 15 }}
           mode="contained"
-          onPress={() => navigation.navigate("Dashboard")}
+          onPress={() => props.navigation.navigate("Dashboard")}
         >
           {" "}
           Back to home
@@ -122,6 +125,23 @@ export default function PaidSuccessfully({ navigation }) {
     </View>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    Amount: state.enterAmount,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    
+    modalvisibalityHandler:() =>{
+      dispatch(setVisiable())
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PaidSuccessfully);
+
 
 const styles = StyleSheet.create({
   container: {flex:1},

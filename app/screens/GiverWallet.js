@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { setVisiable } from "../redux/actions/addAmmountActions"
 import { Appbar, Avatar, Title ,List, Button,RadioButton} from "react-native-paper";
 import { View, StyleSheet,Text,TextInput,ScrollView,SafeAreaView,Image} from "react-native";
 
 
-export default function GiverWallet({navigation}){
- 
+function GiverWallet(props){
+  const {Amount, modalvisibalityHandler} = props;
+  console.log("Giver wallet connected to redux store",Amount)
      const _goBack = () => console.log('Went back');
      const [value, setValue] = React.useState('first');
 
@@ -70,12 +73,26 @@ export default function GiverWallet({navigation}){
           contentStyle={{ height: 45 }}
           labelStyle={{ color: "white", fontSize: 12 }}
           mode="contained"
-          onPress={() => navigation.navigate('Dashboard')}
+          onPress={() => props.navigation.navigate('Dashboard')}
         > Pay</Button>
         </View>
 
       )}
-
+      const mapStateToProps = (state) => {
+        return {
+          Amount: state.enterAmount,
+        };
+      };
+      const mapDispatchToProps = (dispatch) => {
+        return {
+         
+          modalvisibalityHandler:() =>{
+            dispatch(setVisiable())
+          }
+        };
+      };
+      
+      export default connect(mapStateToProps, mapDispatchToProps)(GiverWallet);
 
       const styles = StyleSheet.create({
 

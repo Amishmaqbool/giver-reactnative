@@ -1,8 +1,11 @@
 import React ,{ useState } from "react";
 import { Image, Text, View, StyleSheet,TextInput } from "react-native";
 import { List, Button } from "react-native-paper";
-
-export default function CreateAccount({navigation}) {
+import { connect } from "react-redux";
+import { setVisiable } from "../redux/actions/addAmmountActions"
+function CreateAccount(props) {
+    const {Amount, modalvisibalityHandler} = props;
+    console.log("CreateAccount connected to redux",Amount)
     const [Nametext, setNameText] = React.useState("");
     const [Mnotext, setMnotext] = React.useState("");
     const [Passtext, setPasstext] = React.useState("");
@@ -45,7 +48,7 @@ export default function CreateAccount({navigation}) {
             contentStyle={{ height: 45 }}
             labelStyle={{ color: "white", fontSize: 18 }}
             mode="contained"
-            onPress={() => navigation.navigate('OptVerification')}
+            onPress={() => props.navigation.navigate('OptVerification')}
           >
              Submit
           </Button>
@@ -55,6 +58,22 @@ export default function CreateAccount({navigation}) {
     </View>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    Amount: state.enterAmount,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+   
+    modalvisibalityHandler:() =>{
+      dispatch(setVisiable())
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateAccount);
 
 const styles = StyleSheet.create({
   container: {},

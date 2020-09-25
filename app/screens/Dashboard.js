@@ -13,9 +13,13 @@ import {
   ScrollView,
   Text,
 } from "react-native";
+import { connect } from "react-redux";
+import { setVisiable } from "../redux/actions/addAmmountActions"
 
-export default function Dashboard({ navigation }) {
+ function Dashboard(props) {
+  const {Amount, modalvisibalityHandler} = props;
   const _handleSearch = () => console.log("Searching");
+  console.log("Dashboard connected to redux store",Amount)
 
   return (
     <View style={styles.container}>
@@ -52,7 +56,7 @@ export default function Dashboard({ navigation }) {
           contentStyle={{ height: 31 }}
           labelStyle={{ color: "white", fontSize: 6.5 }}
           mode="contained"
-          onPress={() => navigation.navigate('AddMoney')}
+          onPress={() => props.navigation.navigate('AddMoney')}
         >
           Add money to your wallet
         </Button>
@@ -182,7 +186,7 @@ export default function Dashboard({ navigation }) {
           contentStyle={{ height: 45 }}
           labelStyle={{ color: "white", fontSize: 12 }}
           mode="contained"
-          onPress={() => navigation.navigate('SearchContact')}>
+          onPress={() => props.navigation.navigate('SearchContact')}>
           New Payment
         </Button>
 
@@ -191,6 +195,23 @@ export default function Dashboard({ navigation }) {
     </View>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    Amount: state.enterAmount,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    
+    modalvisibalityHandler:() =>{
+      dispatch(setVisiable())
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+
 
 const styles = StyleSheet.create({
   container: {

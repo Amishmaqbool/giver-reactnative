@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from 'react-redux';
+import { connect } from "react-redux";
+import { setVisiable } from "../redux/actions/addAmmountActions"
 import {
   Appbar,
   List,
@@ -15,8 +16,9 @@ import {
 } from "react-native";
 
 
-
-export default  function AddMoney({ navigation }) {
+function AddMoney(props) {
+  const {Amount, modalvisibalityHandler} = props;
+  console.log("Addmoney store connected to redux",Amount)
   const _goBack = () => console.log("Went back");
   const [text, setText] = React.useState("");
   const onChangeText = (text) => setText(text);
@@ -78,7 +80,7 @@ export default  function AddMoney({ navigation }) {
           labelStyle={{ color: "white", fontSize: 12 }}
           mode="contained"
 
-          onPress={() => navigation.navigate('GiverWallet')}
+          onPress={() => props.navigation.navigate('GiverWallet')}
         >
           Proceed
         </Button>
@@ -87,6 +89,22 @@ export default  function AddMoney({ navigation }) {
     </TouchableWithoutFeedback>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    Amount: state.enterAmount,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+   
+    modalvisibalityHandler:() =>{
+      dispatch(setVisiable())
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddMoney);
 
 const styles = StyleSheet.create({
   container: {

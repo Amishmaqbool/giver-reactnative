@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { setVisiable } from "../redux/actions/addAmmountActions";
 import { Appbar, Avatar, Title ,Searchbar,List} from "react-native-paper";
 import { View, StyleSheet,Text,ScrollView,SafeAreaView,} from "react-native";
 
-export default function SearchContact({navigation}){
+ function SearchContact(props){
 
+    const {Amount, modalvisibalityHandler} = props;
+    console.log("Search contact connected to redux store",Amount)
     const _goBack = () => console.log('Went back');
 
     const _handleSearch = () => console.log('Searching');
@@ -100,7 +104,7 @@ export default function SearchContact({navigation}){
   />}
   
 />
-<List.Item  onPress={() => navigation.navigate('EnterAmount')}
+<List.Item  onPress={() => props.navigation.navigate('EnterAmount')}
   title="Captain America"
    description="+92-11254658213"
   left={props => <Avatar.Image
@@ -170,6 +174,23 @@ export default function SearchContact({navigation}){
       </View>
     );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    Amount: state.enterAmount,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    
+    modalvisibalityHandler:() =>{
+      dispatch(setVisiable())
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchContact);
+
 
 const styles = StyleSheet.create({
     container: {

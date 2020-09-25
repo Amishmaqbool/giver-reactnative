@@ -20,37 +20,42 @@ import { connect } from "react-redux";
 import { amountAdded, setVisiable } from "../redux/actions/addAmmountActions";
 import io from "socket.io-client";
 
-function EnterAmount(props,{ navigation }) {
-  const {Amount, changeAmount} = props;
-  console.log(Amount)
+function EnterAmount(props){
+  const {Amount, changeAmount, modalvisibalityHandler} = props;
+  console.log("Enter amount connected to redux store",Amount)
   const _goBack = () => console.log("Went back");
-  const [CurrenylistItem, setCurrenylistItem] = useState("USD");
-  const [visible, setVisible] = React.useState(false);
+  const [visiable, setVisiable] = React.useState("");
 
   // const showDialog = () => ;
 
   const hideDialog = () => {
-    setVisible(false);
-    navigation.navigate("PaidSuccessfully");
+    modalvisibalityHandler(false)
+    setVisiable(Amount.visiable);
+    props.navigation.navigate('PaidSuccessfully')
+  
   };
   const [text, setText] = React.useState("");
   const onChangeText = (text) => setText(text);
-  var socket = io("ws://192.168.100.166:3000");
+  var socket = io("ws://192.168.100.14:3000");
 
   function AddMoney() {
     changeAmount(text)
     socket.emit("amount", text);
+    setVisiable(Amount.visiable)
+    
     
   }
 
   useEffect(() => {
     // console.log(socket);
+    
     socket.on("amount", function (giver) {
-      console.log(giver);
-
-      setText(amount);
-      setVisible(visiable);
+      console.log("aaaa",giver);
+      changeAmount(giver);
+      
     });
+   
+  
   }, []);
 
   return (
@@ -106,10 +111,10 @@ function EnterAmount(props,{ navigation }) {
           </View>
 
           <Portal>
-            <Dialog visible={visible} onDismiss={hideDialog}>
+            <Dialog visible={visiable} onDismiss={hideDialog}>
               <Dialog.Title>Amount Added</Dialog.Title>
               <Dialog.Content>
-                <Paragraph>$-{text} has been added to you account</Paragraph>
+                <Paragraph>$-{Amount.amount} has been added to you account</Paragraph>
               </Dialog.Content>
               <Dialog.Actions>
                 <Button onPress={hideDialog}>Done</Button>
